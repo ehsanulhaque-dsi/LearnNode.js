@@ -1,0 +1,24 @@
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main>
+        <div style="text-align:center" class="form-group">
+                <button class="btn btn-light"><a href="/student-list" style="text-align:center">Students</a></button>
+                <button class="btn btn-light"><a href="/teacher-list" style="text-align:center">Teachers</a></button>
+            
+        </div>
+        <div class="container">
+            <h4>Student list</h4>
+
+            <div class="card" style="width:300px">
+                <div class="card-body">
+                    <h5 class="card-title">John Doe</h5>
+                    <p class="card-text">john.doe@gmail.com</p>
+                    <p class="card-text">Computer science</p>
+                    <a href="/edit-student" class="btn btn-primary stretched-link">Edit Profile</a>
+                </div>
+            </div>
+        </div>
+    </main>

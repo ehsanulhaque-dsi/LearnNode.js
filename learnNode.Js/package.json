@@ -13,7 +13,9 @@
     "nodemon": "^1.19.1"
   },
   "dependencies": {
+    "delay": "^4.3.0",
     "ejs": "^2.7.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongodb": "^3.3.2"
   }
 }

@@ -1,18 +1,36 @@
-const students = [];
+const getDb = require('../util/database').getDb;
 
-module.exports = class Student{
-    constructor(firstname, lastname, id, dept){
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.id = id;
+module.exports = class Student {
+    constructor(firstName, lastName, email, userId, dept) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.userId = userId;
         this.dept = dept;
     }
 
-    save(){
-        students.push(this);
+    save() {
+        const db = getDb();
+        db.collection('students')
+            .insertOne(this)
+            .then(result => {
+                console.log(result);
+            }).catch(err => {
+                console.log(err);
+            });
     }
 
-    static getAllStudents(){
-        return students
+    static getAllStudent() {
+        const db = getDb();
+        return db
+            .collection('students')
+            .find()
+            .toArray()
+            .then(students => {
+                return students;
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
 }

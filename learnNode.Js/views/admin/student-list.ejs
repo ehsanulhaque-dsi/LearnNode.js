@@ -4,21 +4,43 @@
 <body>
     <%- include('../includes/navigation.ejs') %>
     <main>
+        <% if(students.length > 0 ){ %>
         <div style="text-align:center" class="form-group">
-                <button class="btn btn-light"><a href="/student-list" style="text-align:center">Students</a></button>
-                <button class="btn btn-light"><a href="/teacher-list" style="text-align:center">Teachers</a></button>
-            
+            <button class="btn btn-light"><a href="/student-list" style="text-align:center">Students</a></button>
+            <button class="btn btn-light"><a href="/teacher-list" style="text-align:center">Teachers</a></button>
+
         </div>
         <div class="container">
-            <h4>Student list</h4>
-
-            <div class="card" style="width:300px">
-                <div class="card-body">
-                    <h5 class="card-title">John Doe</h5>
-                    <p class="card-text">john.doe@gmail.com</p>
-                    <p class="card-text">Computer science</p>
-                    <a href="/edit-student" class="btn btn-primary stretched-link">Edit Profile</a>
-                </div>
+            <div>
+                <h4>Student list</h4>
             </div>
+            <div class="row">
+
+                <% for (let student of students) { %>
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <%= student.firstName %> <%= student.lastName %>
+                            </h4>
+                            <p class="card-text">
+                                <%= student.email %>
+                            </p>
+                            <p class="card-text">
+                                <%= student.dept %>
+                            </p>
+                            <a href="/edit-student/<%= student.id %>" class="btn btn-primary stretched-link">Edit Profile</a>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <% } %>
+
+            </div>
+            <% } else { %>
+            <h1>No Student Found!</h1>
+            <% } %>
         </div>
+
+
     </main>

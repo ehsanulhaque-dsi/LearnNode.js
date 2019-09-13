@@ -10,21 +10,21 @@
             <h4>Teacher registeration</h4>
             <br>
 
-            <form action="">
+            <form action="/register-teacher" method="POST">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="firstName" placeholder="First name">
+                    <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First name">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="lastName" placeholder="Last name">
+                    <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last name">
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" id="email" placeholder="Email">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Email">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="id" placeholder="User id">
+                    <input type="text" class="form-control" name="userId" id="userId" placeholder="User id">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="dropdown" placeholder="Depertment">
+                    <input type="text" class="form-control" name="dept" id="dept" placeholder="Depertment">
                 </div>
 
                 <button type="submit" class="btn btn-success">Save</button>

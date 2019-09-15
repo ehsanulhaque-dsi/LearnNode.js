@@ -1,26 +1,30 @@
-const http = require('http');
+const path = require('path');
 
-const server = http.createServer((req, res) => {
+const express = require('express');
+const bodyParser = require('body-parser');
 
-    const url = req.url;
-    console.log(url);
+const errorController = require('./controllers/error');
+const mongoConnect = require('./util/database').mongoConnect;
 
-    if( url === '/'){
-        res.write('<html>');
-        res.write('<head><title>My First Page</title><head>');
-        res.write('<body><form action="/message" method="POST"><input type="text" name="message"><button type="submit">Send</button></form></body>');
-        res.write('</html>');
-        return res.end();
-    }
+const app = express();
 
-    res.setHeader('Content-Type', 'text/html');
-    res.write('<html>');
-    res.write('<head><title>My First Page</title><head>');
-    res.write('<body><h1>Hello from my Node.js Server!</h1></body>');
-    res.write('</html>');
-    res.end();
-    
-    //process.exit();
+app.set('view engine', 'ejs');
+app.set('views', 'views');
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+const studentRoutes = require('./routes/student');
+const teacherRoutes = require('./routes/teacher');
+const adminRouters = require('./routes/admin');
+
+app.use(studentRoutes);
+app.use(teacherRoutes);
+app.use(adminRouters);
+
+app.use(errorController.get404);
+
+mongoConnect(() => {
+    console.log("Connected!!!");
+    app.listen(3000);
 });
 
-server.listen(3000);

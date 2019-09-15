@@ -1,0 +1,35 @@
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main>
+        <div class=" container form-group col-md-5">
+            <br>
+            <h4>Student registeration</h4>
+            <br>
+
+            <form action="/register-student" method="POST">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First name">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last name">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="userId" id="userId" placeholder="User id">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="dept" id="dept" placeholder="Depertment">
+                </div>
+
+                <button type="submit" class="btn btn-success">Save</button>
+                <a href="/student-list" style="text-align:center">Cancel</a>
+
+            </form>
+        </div>
+
+    </main>

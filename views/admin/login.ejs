@@ -1,0 +1,49 @@
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body>
+    <header class="main-header">
+            <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/">Admin</a>
+                        </li>
+                    </ul>
+             </nav>
+    </header>
+    <main>
+
+        <div class=" container form-group col-md-5" style="background-image: url('background.png') ">
+            <br>
+            <h4>Admin Login</h4>
+            <br>
+
+            <form action="/verify-login" method="GET">
+                <div class="form-group">
+                    <input type="text" class="form-control"  placeholder="User id">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control"  placeholder="Password">
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" name="remember"> Remember me</label>
+                </div>
+
+                <button type="submit" class="btn btn-success btn-sm btn-block">Login</button>
+
+            </form>
+            <br>
+
+            <div style="text-align:center" class="form-group">
+                <a href="/forgot-password" style="text-align:center">Forgot password?</a>
+            </div>
+            <div style="text-align:center" class="form-group">
+                <label>Create an account?</label>
+                <a href="/register" >Sign up</a>
+            </div>
+
+        </div>
+
+
+
+    </main>

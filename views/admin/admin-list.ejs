@@ -4,7 +4,7 @@
 <body>
     <%- include('../includes/navigation.ejs') %>
     <main>
-        <% if(teachers.length > 0 ){ %>
+        <% if(admins.length > 0 ){ %>
         <div style="text-align:center" class="form-group">
             <a class="btn btn-light" href="/student-list" style="text-align:center">Students</a>
             <a class="btn btn-light" href="/teacher-list" style="text-align:center">Teachers</a>
@@ -17,20 +17,18 @@
             </div>
             <div class="row">
 
-                <% for (let teacher of teachers) { %>
+                <% for (let admin of admins) { %>
                 <div class="col-sm-3">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">
-                                <%= teacher.firstName %> <%= teacher.lastName %>
+                                <%= admin.firstName %> <%= admin.lastName %>
                             </h4>
                             <p class="card-text">
-                                <%= teacher.email %>
+                                <%= admin.email %>
                             </p>
-                            <p class="card-text">
-                                <%= teacher.dept %>
-                            </p>
-                            <a href="/edit-teacher/<%= teacher._id %>" class="btn btn-primary stretched-link">Edit Profile</a>
+                            
+                            <a href="/edit-admin/<%= admin._id %>" class="btn btn-primary stretched-link">Edit Profile</a>
                         </div>
                     </div>
                     <br>

@@ -6,8 +6,7 @@ exports.getRegisterTeacher = (req, res, next) => {
 }
 
 exports.postRegisterTeacher = (req, res, next) => {
-    console.log('request body: ');
-    console.log(req.body);
+
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
     const email = req.body.email;
@@ -15,9 +14,15 @@ exports.postRegisterTeacher = (req, res, next) => {
     const dept = req.body.dept;
 
     const teacher = new Teacher(firstName, lastName, email, userId, dept);
-    teacher.save();
-    delay(100);
-    res.redirect('/teacher-list');
+    teacher.save()
+        .then(tescher => {
+            delay(100);
+            res.redirect('/teacher-list');
+        })
+        .catch(err => {
+            console.log(err);
+        });
+
 
 }
 
@@ -35,4 +40,41 @@ exports.getEditTeacher = (req, res, next) => {
             console.log(err);
         });
 
+}
+
+exports.postUpdateTeacher = (req, res, next) => {
+    const id = req.params.id;
+    const updateFirstName = req.body.firstName;
+    const updateLastName = req.body.lastName;
+    const updateEmail = req.body.email;
+    const updateUserId = req.body.userId;
+    const updateDept = req.body.dept;
+
+
+    const teacher = new Teacher(updateFirstName, updateLastName, updateEmail, updateUserId, updateDept);
+
+    teacher
+        .updateTeacher(id)
+        .then(teacher => {
+            delay(100);
+            res.redirect('/teacher-list');
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+
+}
+
+exports.postDeleteTeacher = (req, res, next) => {
+    const id = req.params.id;
+    Teacher
+        .deleteTeacher(id)
+        .then(teacher => {
+            delay(100);
+            res.redirect('/teacher-list');
+        })
+        .catch(err => {
+            console.log(err);
+        });
 }

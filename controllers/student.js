@@ -20,12 +20,18 @@ exports.postRegisterStudent = (req, res, nexr) => {
 
     const student = new Student(firstName, lastName, email, userId, dept);
 
-    student.save();
+    student
+        .save()
+        .then(student => {
+            delay(100);
+            res.redirect('/student-list');
+        })
+        .catch(err => {
+            console.log(err);
+        });
 
-    delay(100);
 
-    res.redirect('/student-list');
-    
+
 
 }
 
@@ -33,10 +39,48 @@ exports.getEditStudent = (req, res, next) => {
     const id = req.params.id;
 
     Student.findById(id)
-    .then(student => {
-        res.render('students/edit-student', {
-             pageTitle: "Edit infromation" ,
-             student : student
+        .then(student => {
+            res.render('students/edit-student', {
+                pageTitle: "Edit infromation",
+                student: student
             });
-    })
+        })
+}
+
+exports.postUpdateStudent = (req, res, next) => {
+    const id = req.params.id;
+    const updateFirstName = req.body.firstName;
+    const updateLastName = req.body.lastName;
+    const updateEmail = req.body.email;
+    const updateUserId = req.body.userId;
+    const updateDept = req.body.dept;
+    console.log(req.body);
+
+
+    const student = new Student(updateFirstName, updateLastName, updateEmail, updateUserId, updateDept);
+
+    student
+        .updateStudent(id)
+        .then(student => {
+            delay(100);
+            res.redirect('/student-list');
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+
+}
+
+exports.postDeleteStudent = (req, res, next) => {
+    const id = req.params.id;
+    Student
+        .deleteStudent(id)
+        .then(student => {
+            delay(100);
+            res.redirect('/student-list');
+        })
+        .catch(err => {
+            console.log(err);
+        });
 }

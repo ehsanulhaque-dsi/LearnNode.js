@@ -10,26 +10,26 @@
             <h4>Edit student information</h4>
             <br>
 
-            <form action="">
+            <form action="/update-student/<%= student._id %>" method="POST">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="firstName" value="<%= student.firstName %>">
+                    <input type="text" class="form-control" name="firstName" value="<%= student.firstName %>">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="lastName" value="<%= student.lastName %>">
+                    <input type="text" class="form-control" name="lastName" value="<%= student.lastName %>">
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" id="email" value="<%= student.email %>">
+                    <input type="email" class="form-control" name="email" value="<%= student.email %>">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="userId" value="<%= student.userId %>">
+                    <input type="text" class="form-control" name="userId" value="<%= student.userId %>">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="dept" value="<%= student.dept %>">
+                    <input type="text" class="form-control" name="dept" value="<%= student.dept %>">
                 </div>
 
                 <button type="submit" class="btn btn-success">Update</button>
-                <button type="submit" class="btn btn-danger">delete</button>
-                <button  class="btn btn-primary">Cancel</button>
+                <a class="btn btn-light" href="/delete-student/<%= student._id %>" style="text-align:center">Delete</a>
+                <a class="btn btn-light" href="/student-list" style="text-align:center">Cancel</a>
 
             </form>
         </div>

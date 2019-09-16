@@ -14,7 +14,8 @@ module.exports = class Teacher {
 
     save() {
         const db = getDb();
-        db.collection('teachers')
+        return db
+            .collection('teachers')
             .insertOne(this)
             .then(result => {
                 console.log(result);
@@ -48,5 +49,22 @@ module.exports = class Teacher {
             .catch(err => {
                 console.log(err);
             });
+    }
+
+    updateTeacher(id) {
+        const db = getDb();
+        return db
+            .collection('teachers')
+            .updateOne({ _id: new mongodb.ObjectId(id) }, { $set: this });
+    }
+
+    static deleteTeacher(id) {
+        const db = getDb();
+        return db
+            .collection('teachers')
+            .deleteOne({ _id: new mongodb.ObjectId(id) })
+            .catch(err => {
+                console.log(err);
+            })
     }
 }

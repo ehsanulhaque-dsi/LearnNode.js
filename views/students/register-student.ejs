@@ -11,23 +11,23 @@
 
             <form action="/register-student" method="POST">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First name">
+                    <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First name" required>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last name">
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="userId" id="userId" placeholder="User id">
+                    <input type="text" class="form-control" name="userId" id="userId" placeholder="User id" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="dept" id="dept" placeholder="Depertment">
+                    <input type="text" class="form-control" name="dept" id="dept" placeholder="Depertment" required>
                 </div>
 
                 <button type="submit" class="btn btn-success">Save</button>
-                <a href="/student-list" style="text-align:center">Cancel</a>
+                <a class="btn btn-light" href="/student-list" style="text-align:center">Cancel</a>
 
             </form>
         </div>
